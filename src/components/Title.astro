@@ -1,7 +1,6 @@
 ---
 import { Image, getImage } from "astro:assets";
-import LogoFull from "../images/logo-full.svg";
-import LogoFront from "../images/logo-front.svg";
+import ActionButton from "./ActionButton.astro";
 import LogoFrontTop from "../images/logo-front-top.svg";
 import LogoFrontBottom from "../images/logo-front-bottom.svg";
 import LogoBack from "../images/logo-back.svg";
@@ -31,7 +30,9 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
             Wir machen eure Veranstaltung mit unserem unwiderstehlichen Mix aus
             Pop, Soul und Funkhits zu einem unvergesslichen Erlebnis.
         </p>
-        <a type="button" href="/">Buchen</a>
+        <div class="button-container">
+            <ActionButton/>
+        </div>
     </div>
 </div>
 
@@ -139,11 +140,12 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         animation: logo-final-intro .5s forwards calc(var(--animation-delay) + var(--animation-duration) + 2.75s) 1;
     }
 
-    a[type="button"] {
-        float: right;
-        margin-top: 2rem;
-        clip-path: inset(0 100% 0 0);
-        animation: logo-final-intro .3s forwards calc(var(--animation-delay) + var(--animation-duration) + 3s) 1;
+    .button-container {
+        width: fit-content;
+        margin-left: auto;
+        margin-top: 4rem;
+        opacity: 0;
+        animation: darkness-intro .3s forwards calc(var(--animation-delay) + var(--animation-duration) + 3s) 1;
     }
 
     @keyframes container-intro {
