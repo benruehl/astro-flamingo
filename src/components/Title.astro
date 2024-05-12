@@ -1,0 +1,42 @@
+---
+import { Image, getImage } from "astro:assets";
+import LogoFull from "../images/logo-full.svg";
+import LogoFront from "../images/logo-front.svg";
+import LogoBack from "../images/logo-back.svg";
+
+const optimizedLogoBack = await getImage({ src: LogoBack });
+---
+
+<div class="title">
+    <video autoplay muted loop playsinline style=`mask-image: url(${optimizedLogoBack.src})`>
+        <source src="showreel-slim.mp4" type="video/mp4">
+    </video>
+    <Image src={LogoFront} alt=""/>
+</div>
+
+<style>
+    .title {
+        display: grid;
+        grid-template-areas: "overlay";
+        align-items: flex-start;
+        width: 80%;
+        margin: 50vh auto 0 auto;
+        transform: translateY(-50%);
+    }
+
+    img {
+        grid-area: overlay;
+        display: block;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+    }
+
+    video {
+        grid-area: overlay;
+        width: 100%;
+        height: auto;
+        mask-repeat: no-repeat;
+        mask-position: 50% 0%;
+    }
+</style>
