@@ -2,26 +2,44 @@
 import { Image, getImage } from "astro:assets";
 import LogoFull from "../images/logo-full.svg";
 import LogoFront from "../images/logo-front.svg";
+import LogoFrontTop from "../images/logo-front-top.svg";
+import LogoFrontBottom from "../images/logo-front-bottom.svg";
 import LogoBack from "../images/logo-back.svg";
+import LogoBackSolid from "../images/logo-back-solid.svg";
+import LogoBackText from "../images/logo-back-text.svg";
 
-const optimizedLogoBack = await getImage({ src: LogoBack });
+const optimizedLogoBack = await getImage({ src: LogoBackSolid });
+const optimizedLogoBackText = await getImage({ src: LogoBackText });
 ---
 
-<div class="title">
-    <video autoplay muted loop playsinline style=`mask-image: url(${optimizedLogoBack.src})`>
+<div class="header">
+    <video autoplay muted loop playsinline
+        style=`mask-image: url(${optimizedLogoBack.src}), url(${optimizedLogoBackText.src})`
+    >
         <source src="showreel-slim.mp4" type="video/mp4">
     </video>
-    <Image src={LogoFront} alt=""/>
+    <Image class="logo-top" src={LogoFrontTop} alt="Wild"/>
+    <Image class="logo-bottom" src={LogoFrontBottom} alt="Flamingo"/>
+    <h1>
+        <Image class="logo-back" src={LogoBack} alt=""/>
+        <Image class="logo-top" src={LogoFrontTop} alt=""/>
+        <Image class="logo-bottom" src={LogoFrontBottom} alt=""/>
+    </h1>
 </div>
 
-<style>
-    .title {
+<style lang="scss">
+    .header {
         display: grid;
         grid-template-areas: "overlay";
         align-items: flex-start;
-        width: 80%;
-        margin: 50vh auto 0 auto;
-        transform: translateY(-50%);
+        width: 100%;
+        transform-origin: center top;
+        transform: translateY(50%) scale(0.5);
+        animation: container-intro var(--animation-duration) forwards calc(var(--animation-delay) * 1.5) 1;
+        position: relative;
+
+        --animation-duration: 2s;
+        --animation-delay: 2s;
     }
 
     img {
@@ -29,7 +47,14 @@ const optimizedLogoBack = await getImage({ src: LogoBack });
         display: block;
         width: 100%;
         height: auto;
-        z-index: 1;
+
+        &.logo-top {
+            animation: logo-top-intro var(--animation-duration) forwards var(--animation-delay) 1;
+        }
+
+        &.logo-bottom {
+            animation: logo-bottom-intro var(--animation-duration) forwards var(--animation-delay) 1;
+        }
     }
 
     video {
@@ -38,5 +63,98 @@ const optimizedLogoBack = await getImage({ src: LogoBack });
         height: auto;
         mask-repeat: no-repeat;
         mask-position: 50% 0%;
+        mask-composite: subtract;
+        animation: video-intro var(--animation-duration) forwards var(--animation-delay) 1;
+    }
+
+    h1 {
+        display: grid;
+        grid-template-areas: "overlay";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        translate: -50% 35%;
+        width: 600px;
+        max-width: 90%;
+        margin: 0;
+        transform-origin: center 70%;
+        scale: 1.5;
+        animation: title-intro 2s forwards calc(var(--animation-delay) + var(--animation-duration)) 1;
+
+        img {
+            width: 100%;
+            height: auto;
+
+            &.logo-back {
+                clip-path: inset(20% 100% round 16px);
+                animation: logo-final-intro 3s forwards calc(var(--animation-delay) + var(--animation-duration) + 1.5s) 1;
+            }
+
+            &.logo-top, &.logo-bottom {
+                clip-path: inset(200% 0 0 0);
+                animation: logo-final-intro 1s forwards calc(var(--animation-delay) + var(--animation-duration) + 1s) 1;
+                z-index: 1;
+            }
+        }
+    }
+
+    @keyframes container-intro {
+        from {
+            transform: translateY(50%) scale(0.5);
+        }
+        to {
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes video-intro {
+        from {
+            mask-position: 50% 0, 50% 0;
+        }
+        40% {
+            mask-position: 50% 0, 50% 300%;
+        }
+        60% {
+            mask-size: 100%, auto;
+        }
+        to {
+            mask-position: 50% 76%, 50% 300%;
+            mask-size: 265%, auto;
+        }
+    }
+
+    @keyframes logo-top-intro {
+        from {
+            transform: translateY(0%) scale(1);
+            clip-path: inset(0 0 63% 0);
+        }
+        to {
+            transform: translateY(100%) scale(.75);
+            clip-path: inset(0 0 170% 0);
+            display: none;
+        }
+    }
+
+    @keyframes logo-bottom-intro {
+        from {
+            clip-path: inset(0 0 0 0);
+        }
+        to {
+            transform: translateY(100%) scale(.75);
+            clip-path: inset(0 0 170% 0);
+            display: none;
+        }
+    }
+
+    @keyframes logo-final-intro {
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+
+    @keyframes title-intro {
+        to {
+            scale: 1;
+        }
     }
 </style>
