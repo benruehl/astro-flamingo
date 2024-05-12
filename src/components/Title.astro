@@ -16,15 +16,23 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
     <video autoplay muted loop playsinline
         style=`mask-image: url(${optimizedLogoBack.src}), url(${optimizedLogoBackText.src})`
     >
-        <source src="showreel-slim.mp4" type="video/mp4">
+        <source src="showreel.mp4" type="video/mp4">
     </video>
     <Image class="logo-top" src={LogoFrontTop} alt="Wild"/>
     <Image class="logo-bottom" src={LogoFrontBottom} alt="Flamingo"/>
-    <h1>
-        <Image class="logo-back" src={LogoBack} alt=""/>
-        <Image class="logo-top" src={LogoFrontTop} alt=""/>
-        <Image class="logo-bottom" src={LogoFrontBottom} alt=""/>
-    </h1>
+    <div class="content">
+        <h1>
+            <Image class="logo-back" src={LogoBack} alt=""/>
+            <Image class="logo-top" src={LogoFrontTop} alt=""/>
+            <Image class="logo-bottom" src={LogoFrontBottom} alt=""/>
+        </h1>
+        <strong>Showband mit No.1 Soulhits und Funkhits</strong>
+        <p>
+            Wir machen eure Veranstaltung mit unserem unwiderstehlichen Mix aus
+            Pop, Soul und Funkhits zu einem unvergesslichen Erlebnis.
+        </p>
+        <a type="button" href="/">Buchen</a>
+    </div>
 </div>
 
 <style lang="scss">
@@ -33,13 +41,30 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         grid-template-areas: "overlay";
         align-items: flex-start;
         width: 100%;
+        margin-bottom: 8rem;
         transform-origin: center top;
-        transform: translateY(50%) scale(0.5);
+        transform: translateY(40vh) scale(0.5);
         animation: container-intro var(--animation-duration) forwards calc(var(--animation-delay) * 1.5) 1;
         position: relative;
 
         --animation-duration: 2s;
         --animation-delay: 2s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at left 20%,
+                rgba(var(--background), .9) 30%,
+                rgba(var(--background), 0) 70%
+            );
+            opacity: 0;
+            animation: darkness-intro 3s forwards calc(var(--animation-delay) + var(--animation-duration)) 1;
+        }
     }
 
     img {
@@ -67,19 +92,23 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         animation: video-intro var(--animation-duration) forwards var(--animation-delay) 1;
     }
 
+    .content {
+        position: absolute;
+        left: 10%;
+        top: 50%;
+        translate: 0 -50%;
+        width: 600px;
+        max-width: 90%;
+        color: white;
+        z-index: 1;
+        scale: 1.5;
+        transform-origin: center 70%;
+        animation: content-intro 2s forwards calc(var(--animation-delay) + var(--animation-duration)) 1;
+    }
+
     h1 {
         display: grid;
         grid-template-areas: "overlay";
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        translate: -50% 35%;
-        width: 600px;
-        max-width: 90%;
-        margin: 0;
-        transform-origin: center 70%;
-        scale: 1.5;
-        animation: title-intro 2s forwards calc(var(--animation-delay) + var(--animation-duration)) 1;
 
         img {
             width: 100%;
@@ -87,7 +116,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
 
             &.logo-back {
                 clip-path: inset(20% 100% round 16px);
-                animation: logo-final-intro 3s forwards calc(var(--animation-delay) + var(--animation-duration) + 1.5s) 1;
+                animation: logo-final-intro 2.5s forwards calc(var(--animation-delay) + var(--animation-duration) + 1.5s) 1;
             }
 
             &.logo-top, &.logo-bottom {
@@ -98,10 +127,26 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         }
     }
 
+    strong {
+        font-size: 1.5rem;
+        clip-path: inset(0 100% 0 0);
+        animation: logo-final-intro .5s forwards calc(var(--animation-delay) + var(--animation-duration) + 2.5s) 1;
+    }
+
+    p {
+        font-size: 1.2rem;
+        clip-path: inset(0 100% 0 0);
+        animation: logo-final-intro .5s forwards calc(var(--animation-delay) + var(--animation-duration) + 2.75s) 1;
+    }
+
+    a[type="button"] {
+        float: right;
+        margin-top: 2rem;
+        clip-path: inset(0 100% 0 0);
+        animation: logo-final-intro .3s forwards calc(var(--animation-delay) + var(--animation-duration) + 3s) 1;
+    }
+
     @keyframes container-intro {
-        from {
-            transform: translateY(50%) scale(0.5);
-        }
         to {
             transform: translateY(0) scale(1);
         }
@@ -119,7 +164,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         }
         to {
             mask-position: 50% 76%, 50% 300%;
-            mask-size: 265%, auto;
+            mask-size: 600%, auto;
         }
     }
 
@@ -152,9 +197,15 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         }
     }
 
-    @keyframes title-intro {
+    @keyframes content-intro {
         to {
             scale: 1;
+        }
+    }
+
+    @keyframes darkness-intro {
+        to {
+            opacity: 1;
         }
     }
 </style>

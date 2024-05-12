@@ -1,9 +1,4 @@
 ---
-import { getImage } from "astro:assets";
-import sky from "../images/sky.svg";
-
-const optimizedSky = await getImage({ src: sky });
-
 interface Props {
 	title: string;
 }
@@ -12,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" style=`background-image: url(${optimizedSky.src})`>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -28,30 +23,18 @@ const { title } = Astro.props;
 
 <style is:global lang="scss">
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		--background: 10, 6, 13;
+		--accent: 31, 224, 253;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #200e27;
+		background-color: rgb(var(--background));
 		background-size: 1000px;
-
-		&::after {
-			content: "";
-			position: absolute;
-			inset: 0;
-			background-image: inherit;
-			background-size: 1000px;
-        	mask-image: radial-gradient(rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%);
-			pointer-events: none;
-		}
+	}
+	html,
+	body {
+		max-width: 100%;
+		overflow-x: hidden;
 	}
 	body {
 		margin: 0;
@@ -71,5 +54,13 @@ const { title } = Astro.props;
 		line-height: 1;
 		text-align: center;
 		margin-bottom: 1em;
+	}
+	a[type="button"] {
+		text-decoration: none;
+		background: rgb(var(--accent));
+		color: rgb(var(--background));
+		font-size: 1.5rem;
+		padding: .4em 2em;
+		border-radius: 8px;
 	}
 </style>
