@@ -38,6 +38,9 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
 
 <style lang="scss">
     .header {
+        --animation-duration: 2s;
+        --animation-delay: 2s;
+
         display: grid;
         grid-template-areas: "overlay";
         align-items: flex-start;
@@ -47,9 +50,6 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         transform: translateY(40vh) scale(0.5);
         animation: container-intro var(--animation-duration) forwards calc(var(--animation-delay) * 1.5) 1;
         position: relative;
-
-        --animation-duration: 2s;
-        --animation-delay: 2s;
 
         &::after {
             content: "";
@@ -87,6 +87,8 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         grid-area: overlay;
         width: 100%;
         height: auto;
+        min-height: 100vh;
+        object-fit: cover;
         mask-repeat: no-repeat;
         mask-position: 50% 0%;
         mask-composite: subtract;
@@ -99,7 +101,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         top: 50%;
         translate: 0 -50%;
         width: 600px;
-        max-width: 90%;
+        max-width: 80%;
         color: white;
         z-index: 1;
         scale: 1.5;
@@ -129,6 +131,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
     }
 
     strong {
+        display: block;
         font-size: 1.5rem;
         clip-path: inset(0 100% 0 0);
         animation: logo-final-intro .5s forwards calc(var(--animation-delay) + var(--animation-duration) + 2.5s) 1;
@@ -166,7 +169,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         }
         to {
             mask-position: 50% 76%, 50% 300%;
-            mask-size: 600%, auto;
+            mask-size: 3000%, auto;
         }
     }
 
