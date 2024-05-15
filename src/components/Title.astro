@@ -51,6 +51,11 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         animation: container-intro var(--animation-duration) forwards calc(var(--animation-delay) * 1.5) 1;
         position: relative;
 
+        @media (max-width: $sm) {
+            --animation-delay: 1s;
+            transform: translateY(40vh) scale(0.75);
+        }
+
         &::after {
             content: "";
             position: absolute;
