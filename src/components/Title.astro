@@ -70,6 +70,16 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
             );
             opacity: 0;
             animation: darkness-intro 3s forwards calc(var(--animation-delay) + var(--animation-duration)) 1;
+
+            @media (max-width: $sm) {
+                background: radial-gradient(
+                    circle at center,
+                    rgba(var(--background), .8) 40%,
+                    rgba(var(--background), .7) 50%,
+                    rgba(var(--background), .55) 60%,
+                    rgba(var(--background), .1) 100%
+                );
+            }
         }
     }
 
