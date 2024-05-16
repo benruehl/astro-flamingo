@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import LogoAllround from "../images/logo-allround.svg";
+import LogoKlafs from "../images/logo-klafs.svg";
+import LogoMan from "../images/logo-man.svg";
+import LogoSpd from "../images/logo-spd.svg";
+import LogoTc from "../images/logo-tc.svg";
+---
+
+<ul class="customer-bar max-content-width">
+    <li>
+        <Image src={LogoAllround} alt="Allround Autovermietung"/>
+    </li>
+    <li>
+        <Image src={LogoTc} alt="Touristik & Caravaning"/>
+    </li>
+    <li>
+        <Image src={LogoMan} alt="MAN Financial Services"/>
+    </li>
+    <li>
+        <Image src={LogoKlafs} alt="KLAFS"/>
+    </li>
+    <li>
+        <Image src={LogoSpd} alt="SPD Fraktion im Bundestag"/>
+    </li>
+</ul>
+
+<style lang="scss">
+    .customer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4rem;
+
+        img {
+            width: 8rem;
+            height: auto;
+        }
+    }
+
+    ul {
+        list-style: none;
+    }
+</style>
