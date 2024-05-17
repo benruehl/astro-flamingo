@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import PortraitGary from "../images/portrait-gary.png";
+import PortraitJakob from "../images/portrait-jakob.png";
+import PortraitLisa from "../images/portrait-lisa.png";
+import PortraitMarcin from "../images/portrait-marcin.png";
+import PortraitRalf from "../images/portrait-ralf.png";
+import PortraitVanessa from "../images/portrait-vanessa.png";
+
+const musicians = [
+    {
+        img: PortraitLisa,
+        name: "Lisa Martinez",
+        role: "Vocal"
+    },
+    {
+        img: PortraitRalf,
+        name: "Ralf Kienle",
+        role: "Bass, Vocal"
+    },
+    {
+        img: PortraitVanessa,
+        name: "Vanessa Chase",
+        role: "Vocal"
+    },
+    {
+        img: PortraitMarcin,
+        name: "Marcin Novac",
+        role: "Guitar, Vocal"
+    },
+    {
+        img: PortraitGary,
+        name: "Gary Doessel",
+        role: "Keyboard"
+    },
+    {
+        img: PortraitJakob,
+        name: "Jakob Peter",
+        role: "Drums"
+    }
+];
+---
+
+<section class="max-content-width">
+    <h2>Die Band</h2>
+    <div class="musicians">
+        {musicians.map((musician) => (
+            <figure>
+                <Image src={musician.img} alt={musician.name} width={200}/>
+                <figcaption>
+                    <strong>{musician.name}</strong>
+                    {musician.role}
+                </figcaption>
+            </figure>
+        ))}
+    </div>
+</section>
+
+<style lang="scss">
+    section {
+    }
+
+    .musicians {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(max(200px, calc((100% - 120px) / 3)), 1fr));
+        gap: 60px;
+        justify-items: center;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    figure {
+        margin: 0;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 13px 0;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(to top, #490387, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b);
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            border-radius: 1000px;
+            z-index: -1;
+        }
+
+        img {
+            border-radius: 1000px;
+        }
+
+        figcaption {
+            color: rgb(var(--background));
+            background: rgb(var(--accent-alt));
+            border-top: 4px solid rgb(var(--background));
+            border-radius: 8px;
+            padding: .5rem 1.2rem;
+            line-height: 1;
+            text-align: center;
+            width: fit-content;
+            margin: auto;
+            margin-top: -20%;
+            z-index: 1;
+            position: relative;
+        }
+
+        strong {
+            display: block;
+        }
+    }
+</style>
