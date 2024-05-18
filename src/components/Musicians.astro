@@ -77,6 +77,7 @@ const musicians = [
         justify-items: center;
         max-width: 800px;
         margin: auto;
+        margin-top: 6rem;
     }
 
     figure {
@@ -84,14 +85,15 @@ const musicians = [
         position: relative;
 
         &::before {
+            --background-color: var(--accent-alt);
             content: "";
             position: absolute;
             inset: 13px 0;
             aspect-ratio: 1 / 1;
             background: radial-gradient(
                 circle at 50% 70%,
-                rgba(var(--accent-alt), .3),
-                rgba(var(--accent-alt), 0) 70%
+                rgba(var(--background-color), .3),
+                rgba(var(--background-color), .8) 70%
             );
             border-radius: 1000px;
             z-index: -1;
@@ -108,24 +110,12 @@ const musicians = [
         }
 
         figcaption {
-            color: rgb(var(--background));
-            background:
-                radial-gradient(
-                    rgba(var(--accent-dark), .5) 20%,
-                    transparent 20%,
-                    transparent 80%,
-                    rgba(var(--accent-dark), .5) 80%
-                ),
-                rgb(var(--accent));
-            background-size: 6px 6px;
-            border-top: 4px solid rgb(var(--background));
-            border-radius: 8px 8px 50% 50%;
-            padding: .5rem 1.2rem 1rem;
-            line-height: 1;
-            text-align: center;
+            color: white;
+            padding: 1rem 1.2rem 1rem;
+            line-height: 1.2;
             width: fit-content;
             margin: auto;
-            margin-top: -20%;
+            margin-top: 0%;
             z-index: 1;
             position: relative;
         }
@@ -136,7 +126,8 @@ const musicians = [
 
         .fire {
             position: absolute;
-            bottom: 70px;
+            top: -30px;
+            left: -10px;
             z-index: -2;
             clip-path: xywh(0 0 100% 115% round 0 0 100% 100%);
             background: radial-gradient(

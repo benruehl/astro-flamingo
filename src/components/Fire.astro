@@ -15,7 +15,7 @@ const { class: className, animationDelay = "0s" } = Astro.props;
 </div>
 
 <style lang="scss" define:vars={{animationDelay}}>
-    $fireSize: 200;
+    $fireSize: 220;
     $burnSize: 60;
     $burnCount: 25;
 
@@ -39,7 +39,7 @@ const { class: className, animationDelay = "0s" } = Astro.props;
         
         .burn {
             position: absolute;
-            top: #{$fireSize}px;
+            top: #{$fireSize * 0.75}px;
             left: #{calc($burnSize / -2)}px;
             width: #{$burnSize}px;
             height: #{$burnSize}px;
