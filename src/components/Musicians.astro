@@ -43,7 +43,18 @@ const musicians = [
 ---
 
 <section class="max-content-width">
-    <h2>Die Band</h2>
+    <p class="pre-heading">Die Band</p>
+    <h2>Sechs Multitalente aus Berlin</h2>
+    <p>
+        Als <span class="accent">Wild Flamingo Coverband</span> begeistern wir mit unseren zwei
+        erstklassigen Leadsängerinnen und vier Bandmitgliedern jedes Publikum
+        auf Firmenparties und anderen Events.
+    </p>
+    <p>
+        Seit mehr als zwei Jahrzehnten führen wir außerdem
+        monatlich 400 Gäste musikalisch durch eine Kult-Show im legendären SO36
+        in Berlin.
+    </p>
     <div class="musicians">
         {musicians.map((musician, i) => (
             <figure>
@@ -125,5 +136,17 @@ const musicians = [
             left: -150px;
             z-index: -2;
         }
+    }
+
+    h2 {
+        max-width: 42rem;
+    }
+
+    p {
+        max-width: 42rem;
+    }
+
+    .accent {
+        color: rgb(var(--accent));
     }
 </style>

@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -22,6 +22,13 @@ const { title } = Astro.props;
 </html>
 
 <style is:global lang="scss">
+	@font-face {
+		font-family: 'Broadway';
+		src: url('/fonts/BroadwayRegular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
 	:root {
 		--background: 10, 6, 13;
 		--accent: 31, 224, 253;
@@ -53,15 +60,34 @@ const { title } = Astro.props;
 		transform: translate3d(0, 0, 0);
 	}
 	h1 {
+		font-family: 'Broadway', sans-serif;
 		font-size: 4rem;
 		font-weight: 700;
 		line-height: 1;
 		text-align: center;
 		margin-bottom: 1em;
 	}
+	h2 {
+		font-family: 'Broadway', sans-serif;
+		font-size: 4rem;
+		font-weight: 400;
+		line-height: 1;
+		hyphens: auto;
+	}
 	.max-content-width {
 		width: var(--max-content-width);
 		max-width: calc(100% - 2rem);
 		margin: auto;
+	}
+	.pre-heading {
+		font-family: 'Broadway', sans-serif;
+		text-transform: uppercase;
+		color: rgb(var(--accent-alt));
+		margin-bottom: 0;
+		margin-top: 4rem;
+
+		+ h2 {
+			margin-top: 0;
+		}
 	}
 </style>
