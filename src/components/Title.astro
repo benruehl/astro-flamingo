@@ -16,7 +16,8 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
     <video autoplay muted loop playsinline
         style=`mask-image: url(${optimizedLogoBack.src}), url(${optimizedLogoBackText.src})`
     >
-        <source src=`${baseUrl}/showreel.mp4` type="video/mp4">
+        <source src=`${baseUrl}/showreel-av1.mp4` type="video/mp4">
+        <source src=`${baseUrl}/showreel-h264.mp4` type="video/mp4">
     </video>
     <Image class="logo-top" src={LogoFrontTop} alt="Wild"/>
     <Image class="logo-bottom" src={LogoFrontBottom} alt="Flamingo"/>
