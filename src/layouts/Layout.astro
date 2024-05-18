@@ -39,8 +39,12 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
+		font-size: 18px;
 		background-color: rgb(var(--background));
-		background-size: 1000px;
+
+		@media (max-width: $sm) {
+			font-size: 16px;
+		}
 	}
 	html,
 	body {
