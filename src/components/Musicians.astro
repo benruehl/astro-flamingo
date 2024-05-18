@@ -7,6 +7,7 @@ import PortraitMarcin from "../images/portrait-marcin.png";
 import PortraitRalf from "../images/portrait-ralf.png";
 import PortraitVanessa from "../images/portrait-vanessa.png";
 import Fire from "./Fire.astro";
+import IconCard from "./common/IconCard.astro";
 
 const musicians = [
     {
@@ -72,6 +73,25 @@ const musicians = [
                 ))}
             </div>
         </div>
+        <div class="content-features">
+            <IconCard title="Liveband für jedes Event" iconName="solar:wineglass-triangle-bold-duotone">
+                Wir zeichnen sich durch <span class="accent">sicht- und spürbare Begeisterung</span> aus,
+                die wir live und virtuos zum Ausdruck bringen.
+                Die Intensität und Präsenz unserer Performance verwandelt
+                großartige Songs in eine <span class="accent">mitreißende Live-Show</span> und macht Ihre
+                Party zu einem unvergesslichen Fest.
+            </IconCard>
+            <IconCard title="20 Jahre Erfahrung" iconName="solar:microphone-bold-duotone">
+                Unsere Bandmitglieder bringen ein solides Fundament von mehr
+                als 20 Jahren Erfahrung im nationalen und internationalen
+                Entertainment mit.
+            </IconCard>
+            <IconCard title="Funk • Soul • Pop" iconName="solar:music-note-bold-duotone">
+                Mit unseren zwei <span class="accent">First Class Leadsängerinnen</span> performen wir
+                Pop-, Soul- & Funkhits z.B. von Beyoncé, Micheal Jackson,
+                Gloria Estefan, Alicia Keys, Amy Winehouse, James Brown, u.v.m.
+            </IconCard>
+        </div>
     </div>
 </section>
 
@@ -80,6 +100,10 @@ const musicians = [
         display: grid;
         gap: 4rem;
         grid-template-columns: repeat(auto-fit, minmax(min(470px, 100%), 1fr));
+
+        .content-musicians {
+            grid-row: span 2;
+        }
     }
 
     .musicians {
