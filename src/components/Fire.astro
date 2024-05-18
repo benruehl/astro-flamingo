@@ -1,0 +1,65 @@
+---
+interface Props {
+    class?: string;
+    animationDelay?: string;
+}
+
+const { class: className, animationDelay = "0s" } = Astro.props;
+---
+
+<div class="fire" class:list={["fire", className]}>
+    {[...Array(40).keys()].map((i) => (
+        <div class="burn heat"></div>
+        <div class="burn"></div>
+    ))}
+</div>
+
+<style lang="scss" define:vars={{animationDelay}}>
+    $fireSize: 500;
+    $burnSize: 90;
+    $burnCount: 30;
+
+    .fire {
+        position: relative;
+        width: #{$fireSize * 0.4}px;
+        background: rgb(var(--accent));
+        filter: blur(30px) contrast(3);
+        border: #{$fireSize * 0.5}px solid rgb(var(--background));
+        border-top: none;
+        border-bottom-color: transparent;
+        border-radius: 40%;
+        box-sizing: border-box;
+        transform: scale(0.4, 0.7);
+        mix-blend-mode: difference;
+        
+        .burn {
+            position: absolute;
+            top: #{$fireSize * 0.5}px;
+            left: #{calc($burnSize / -2)}px;
+            width: #{$burnSize}px;
+            height: #{$burnSize}px;
+            background: rgb(var(--background));
+            border-radius: 100%;
+            
+            @for $i from 1 through $burnCount * 2 {
+                &.heat:nth-child(#{$i}) {
+                    height: #{random(10)}px;
+                }
+                &:nth-child(#{$i}) {
+                    height: #{random(calc($burnSize / 2))}px;
+                    margin-left: #{random($fireSize) - calc($fireSize / 2)}px;
+                    animation: burning #{random(1000) + 300}ms calc(-3000ms + var(--animationDelay)) infinite linear;
+                }
+            }
+        }
+    }
+
+    @keyframes burning {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-#{$fireSize * 0.3 + $burnSize}px);
+        }
+    }
+</style>

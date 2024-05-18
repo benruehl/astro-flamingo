@@ -6,6 +6,7 @@ import PortraitLisa from "../images/portrait-lisa.png";
 import PortraitMarcin from "../images/portrait-marcin.png";
 import PortraitRalf from "../images/portrait-ralf.png";
 import PortraitVanessa from "../images/portrait-vanessa.png";
+import Fire from "./Fire.astro";
 
 const musicians = [
     {
@@ -44,8 +45,9 @@ const musicians = [
 <section class="max-content-width">
     <h2>Die Band</h2>
     <div class="musicians">
-        {musicians.map((musician) => (
+        {musicians.map((musician, i) => (
             <figure>
+                <Fire animationDelay={`${i}s`}/>
                 <Image src={musician.img} alt={musician.name} width={200}/>
                 <figcaption>
                     <strong>{musician.name}</strong>
@@ -78,12 +80,15 @@ const musicians = [
             position: absolute;
             inset: 13px 0;
             aspect-ratio: 1 / 1;
-            background: linear-gradient(to top, #490387, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b);
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
+            background: radial-gradient(circle at 50% 70%, rgba(var(--accent), .3), rgba(var(--accent), 0) 70%);
             border-radius: 1000px;
             z-index: -1;
+        }
+
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i})::before {
+                animation-delay: #{$i * -1}s;
+            }
         }
 
         img {
@@ -107,6 +112,13 @@ const musicians = [
 
         strong {
             display: block;
+        }
+
+        .fire {
+            position: absolute;
+            bottom: 50px;
+            left: -150px;
+            z-index: -2;
         }
     }
 </style>
