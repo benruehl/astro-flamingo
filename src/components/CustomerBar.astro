@@ -31,10 +31,24 @@ import LogoTc from "../images/logo-tc.svg";
         align-items: center;
         justify-content: space-between;
         gap: 4rem;
+        padding: 24px 0 0 0;
 
         img {
             width: 8rem;
             height: auto;
+        }
+
+        @media (max-width: $sm) {
+            animation: bar-slide 30s -7s linear infinite;
+        }
+
+        @keyframes bar-slide {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-1008px);
+            }
         }
     }
 
