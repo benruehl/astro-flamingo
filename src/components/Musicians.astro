@@ -136,9 +136,14 @@ const musicians = [
 
         .fire {
             position: absolute;
-            bottom: 50px;
-            left: -150px;
+            bottom: 70px;
             z-index: -2;
+            clip-path: xywh(0 0 100% 115% round 0 0 100% 100%);
+            background: radial-gradient(
+                circle at 50% 70%,
+                rgb(var(--accent)),
+                transparent 70%
+            );
         }
     }
 

@@ -8,33 +8,38 @@ const { class: className, animationDelay = "0s" } = Astro.props;
 ---
 
 <div class="fire" class:list={["fire", className]}>
-    {[...Array(40).keys()].map((i) => (
+    {[...Array(25).keys()].map(() => (
         <div class="burn heat"></div>
         <div class="burn"></div>
     ))}
 </div>
 
 <style lang="scss" define:vars={{animationDelay}}>
-    $fireSize: 500;
-    $burnSize: 90;
-    $burnCount: 30;
+    $fireSize: 200;
+    $burnSize: 60;
+    $burnCount: 25;
 
     .fire {
         position: relative;
-        width: #{$fireSize * 0.4}px;
-        background: rgb(var(--accent-alt));
-        filter: blur(30px) contrast(3);
-        border: #{$fireSize * 0.5}px solid rgb(var(--background));
-        border-top: none;
-        border-bottom-color: transparent;
-        border-radius: 40%;
-        box-sizing: border-box;
-        transform: scale(0.4, 0.7);
+        width: #{$fireSize}px;
+        height: #{$fireSize}px;
+        filter: blur(20px) contrast(3);
         mix-blend-mode: difference;
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: #{$fireSize}px;
+            aspect-ratio: 1;
+            border-image: radial-gradient(rgb(var(--accent-alt)) 69%, #0000 70%) 84.5%/50%;
+            clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+            transform: rotate(180deg) scale(0.8, 1);
+        }
         
         .burn {
             position: absolute;
-            top: #{$fireSize * 0.5}px;
+            top: #{$fireSize}px;
             left: #{calc($burnSize / -2)}px;
             width: #{$burnSize}px;
             height: #{$burnSize}px;
@@ -47,7 +52,7 @@ const { class: className, animationDelay = "0s" } = Astro.props;
                 }
                 &:nth-child(#{$i}) {
                     height: #{random(calc($burnSize / 2))}px;
-                    margin-left: #{random($fireSize) - calc($fireSize / 2)}px;
+                    margin-left: #{random($fireSize)}px;
                     animation: burning #{random(1000) + 300}ms calc(-3000ms + var(--animationDelay)) infinite linear;
                 }
             }
@@ -59,7 +64,7 @@ const { class: className, animationDelay = "0s" } = Astro.props;
             transform: translateY(0);
         }
         100% {
-            transform: translateY(-#{$fireSize * 0.3 + $burnSize}px);
+            transform: translateY(-#{$fireSize}px);
         }
     }
 </style>
