@@ -46,14 +46,14 @@ const musicians = [
     <p class="pre-heading">Die Band</p>
     <h2>Sechs Multitalente aus Berlin</h2>
     <p>
-        Als <span class="accent">Wild Flamingo Coverband</span> begeistern wir mit unseren zwei
-        erstklassigen Leadsängerinnen und vier Bandmitgliedern jedes Publikum
-        auf Firmenparties und anderen Events.
+        Als <span class="accent">Wild Flamingo Coverband</span> begeistern wir
+        mit unseren zwei erstklassigen Leadsängerinnen und vier Bandmitgliedern
+        jedes Publikum auf Firmenparties und anderen Events.
     </p>
     <p>
         Seit mehr als zwei Jahrzehnten führen wir außerdem
-        monatlich 400 Gäste musikalisch durch eine Kult-Show im legendären SO36
-        in Berlin.
+        <span class="accent">monatlich 400 Gäste</span> musikalisch durch eine
+        Kult-Show im legendären SO36 in Berlin.
     </p>
     <div class="musicians">
         {musicians.map((musician, i) => (
@@ -88,7 +88,11 @@ const musicians = [
             position: absolute;
             inset: 13px 0;
             aspect-ratio: 1 / 1;
-            background: radial-gradient(circle at 50% 70%, rgba(var(--accent), .3), rgba(var(--accent), 0) 70%);
+            background: radial-gradient(
+                circle at 50% 70%,
+                rgba(var(--accent-alt), .3),
+                rgba(var(--accent-alt), 0) 70%
+            );
             border-radius: 1000px;
             z-index: -1;
         }
@@ -107,12 +111,12 @@ const musicians = [
             color: rgb(var(--background));
             background:
                 radial-gradient(
-                    rgba(var(--accent-alt-dark), .5) 20%,
+                    rgba(var(--accent-dark), .5) 20%,
                     transparent 20%,
                     transparent 80%,
-                    rgba(var(--accent-alt-dark), .5) 80%
+                    rgba(var(--accent-dark), .5) 80%
                 ),
-                rgb(var(--accent-alt));
+                rgb(var(--accent));
             background-size: 6px 6px;
             border-top: 4px solid rgb(var(--background));
             border-radius: 8px 8px 50% 50%;
