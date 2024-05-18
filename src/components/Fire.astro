@@ -25,6 +25,8 @@ const { class: className, animationDelay = "0s" } = Astro.props;
         height: #{$fireSize}px;
         filter: blur(20px) contrast(3);
         mix-blend-mode: difference;
+        background: rgb(var(--background));
+        transform: translate3d(0,0,0);
 
         &::before {
             content: "";
@@ -45,7 +47,6 @@ const { class: className, animationDelay = "0s" } = Astro.props;
             height: #{$burnSize}px;
             background: rgb(var(--background));
             border-radius: 100%;
-            transform: translate3d(0,0,0);
             
             @for $i from 1 through $burnCount * 2 {
                 &.heat:nth-child(#{$i}) {
