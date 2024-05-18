@@ -59,9 +59,6 @@ const musicians = [
 </section>
 
 <style lang="scss">
-    section {
-    }
-
     .musicians {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(max(200px, calc((100% - 120px) / 3)), 1fr));
@@ -97,10 +94,18 @@ const musicians = [
 
         figcaption {
             color: rgb(var(--background));
-            background: rgb(var(--accent-alt));
+            background:
+                radial-gradient(
+                    rgba(var(--accent-alt-dark), .5) 20%,
+                    transparent 20%,
+                    transparent 80%,
+                    rgba(var(--accent-alt-dark), .5) 80%
+                ),
+                rgb(var(--accent-alt));
+            background-size: 6px 6px;
             border-top: 4px solid rgb(var(--background));
-            border-radius: 8px;
-            padding: .5rem 1.2rem;
+            border-radius: 8px 8px 50% 50%;
+            padding: .5rem 1.2rem 1rem;
             line-height: 1;
             text-align: center;
             width: fit-content;
