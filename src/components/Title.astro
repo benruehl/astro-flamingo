@@ -7,6 +7,7 @@ import LogoBack from "../images/logo-back.svg";
 import LogoBackSolid from "../images/logo-back-solid.svg";
 import LogoBackText from "../images/logo-back-text.svg";
 
+const baseUrl = import.meta.env.BASE_URL;
 const optimizedLogoBack = await getImage({ src: LogoBackSolid });
 const optimizedLogoBackText = await getImage({ src: LogoBackText });
 ---
@@ -15,7 +16,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
     <video autoplay muted loop playsinline
         style=`mask-image: url(${optimizedLogoBack.src}), url(${optimizedLogoBackText.src})`
     >
-        <source src="showreel.mp4" type="video/mp4">
+        <source src=`${baseUrl}/showreel.mp4` type="video/mp4">
     </video>
     <Image class="logo-top" src={LogoFrontTop} alt="Wild"/>
     <Image class="logo-bottom" src={LogoFrontBottom} alt="Flamingo"/>
