@@ -45,7 +45,7 @@ const optimizedPoster = await getImage({ src: Poster });
 <style lang="scss">
     .header {
         --animation-duration: 2s;
-        --animation-delay: 2s;
+        --animation-delay: 22s;
 
         display: grid;
         grid-template-areas: "overlay";
@@ -112,6 +112,7 @@ const optimizedPoster = await getImage({ src: Poster });
         mask-repeat: no-repeat;
         mask-position: 50% 0%;
         mask-composite: subtract;
+        -webkit-mask-composite: source-out, source-out;
         animation: video-intro var(--animation-duration) forwards var(--animation-delay) 1;
     }
 
@@ -182,14 +183,14 @@ const optimizedPoster = await getImage({ src: Poster });
             mask-position: 50% 0, 50% 0;
         }
         40% {
-            mask-position: 50% 0, 50% 10%;
+            mask-position: 50% 0, 50% 300%;
         }
         60% {
-            mask-size: 100%, 0;
+            mask-size: 100%, auto;
         }
         to {
-            mask-position: 50% 76%, 50% 10%;
-            mask-size: 3000%, 0;
+            mask-position: 50% 76%, 50% 300%;
+            mask-size: 3000%, auto;
         }
     }
 
