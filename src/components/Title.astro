@@ -108,7 +108,6 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         object-fit: cover;
         mask-repeat: no-repeat;
         mask-position: 50% 0%;
-        /* autoprefixer: ignore next */
         mask-composite: subtract;
         animation: video-intro var(--animation-duration) forwards var(--animation-delay) 1;
     }
@@ -180,14 +179,14 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
             mask-position: 50% 0, 50% 0;
         }
         40% {
-            mask-position: 50% 0, 50% 300%;
+            mask-position: 50% 0, 50% 50%;
         }
         60% {
-            mask-size: 100%, auto;
+            mask-size: 100%, 0;
         }
         to {
-            mask-position: 50% 76%, 50% 300%;
-            mask-size: 3000%, auto;
+            mask-position: 50% 76%, 50% 50%;
+            mask-size: 3000%, 0;
         }
     }
 
