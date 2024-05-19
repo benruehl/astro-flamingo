@@ -6,18 +6,21 @@ import LogoFrontBottom from "../images/logo-front-bottom.svg";
 import LogoBack from "../images/logo-back.svg";
 import LogoBackSolid from "../images/logo-back-solid.svg";
 import LogoBackText from "../images/logo-back-text.svg";
+import Poster from "../images/showreel-poster.jpg";
 
 const baseUrl = import.meta.env.BASE_URL;
 const optimizedLogoBack = await getImage({ src: LogoBackSolid });
 const optimizedLogoBackText = await getImage({ src: LogoBackText });
+const optimizedPoster = await getImage({ src: Poster });
 ---
 
 <div class="header">
     <video autoplay muted loop playsinline
         style=`mask-image: url(${optimizedLogoBack.src}), url(${optimizedLogoBackText.src})`
+        poster={optimizedPoster.src}
     >
-        <source src=`${baseUrl}/showreel-av1.mp4` type="video/mp4">
-        <source src=`${baseUrl}/showreel-h264.mp4` type="video/mp4">
+        <source src=`${baseUrl}/showreel-av1.mp4#t=35` type="video/mp4">
+        <source src=`${baseUrl}/showreel-h264.mp4#t=35` type="video/mp4">
     </video>
     <Image class="logo-top" src={LogoFrontTop} alt="Wild"/>
     <Image class="logo-bottom" src={LogoFrontBottom} alt="Flamingo"/>
