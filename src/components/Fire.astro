@@ -25,6 +25,7 @@ const { class: className, animationDelay = "0s" } = Astro.props;
         height: #{$fireSize}px;
         filter: blur(20px) contrast(3);
         mix-blend-mode: screen;
+        transform: translate3d(0,0,0);
 
         &::before {
             content: "";
