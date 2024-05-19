@@ -41,7 +41,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
 
 <style lang="scss">
     .header {
-        --animation-duration: 12s;
+        --animation-duration: 2s;
         --animation-delay: 2s;
 
         display: grid;
@@ -108,6 +108,7 @@ const optimizedLogoBackText = await getImage({ src: LogoBackText });
         object-fit: cover;
         mask-repeat: no-repeat;
         mask-position: 50% 0%;
+        /* autoprefixer: ignore next */
         mask-composite: subtract;
         animation: video-intro var(--animation-duration) forwards var(--animation-delay) 1;
     }
